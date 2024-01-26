@@ -15,6 +15,7 @@ internal class Program
 
     private static List<Coordinate> coordinates = new List<Coordinate> ();
     private static string pathSnakeAuto = "8";
+    private static int points = 0;
 
     private static void Main(string[] args)
     {
@@ -39,6 +40,9 @@ internal class Program
                     break;
                 case ConsoleKey.DownArrow:
                     pathSnakeAuto = "5";
+                    break;
+                case ConsoleKey.Escape:
+                    Environment.Exit(0);
                     break;
             }
             Thread.Sleep(1);
@@ -109,6 +113,7 @@ internal class Program
                 coordinate.Row = coordinates[0].Row - (1 * factorL);
                 coordinate.Collum = coordinates[0].Collum - (1 * factorC);
                 coordinates.Insert(0,coordinate);
+                points++;
 
                 DrawSnake();
 
@@ -169,6 +174,7 @@ internal class Program
         coordinate.Row = new Random().Next(0, 7);
         coordinates.Add(coordinate);
         grade[coordinate.Row, coordinate.Collum] = "O";
+        points = 0;
         DrawSnake();
         RandomFruit();
     }
@@ -191,6 +197,7 @@ internal class Program
     public static void DrawGrid()
     {
         Console.Clear();
+        Console.WriteLine("=====SNAKE======\n");
         for (int i = 0; i < 8; i++)
         {
             for (int j = 0; j < 16; j++)
@@ -199,5 +206,7 @@ internal class Program
             }
             Console.Write("\n");
         }
+
+        Console.WriteLine($"\nPoints: {points}");
     }
 }
