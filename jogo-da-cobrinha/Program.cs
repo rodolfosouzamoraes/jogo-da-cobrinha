@@ -3,14 +3,14 @@
 internal class Program
 {
     private static Thread trd;
-    public static string[,] grade = {   {"#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"},
-                                        {"#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"},
-                                        {"#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"},
-                                        {"#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"},
-                                        {"#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"},
-                                        {"#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"},
-                                        {"#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"},
-                                        {"#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"}
+    public static string[,] grade = {   {"#","#","#","#","#","#","#","#"},
+                                        {"#","#","#","#","#","#","#","#"},
+                                        {"#","#","#","#","#","#","#","#"},
+                                        {"#","#","#","#","#","#","#","#"},
+                                        {"#","#","#","#","#","#","#","#"},
+                                        {"#","#","#","#","#","#","#","#"},
+                                        {"#","#","#","#","#","#","#","#"},
+                                        {"#","#","#","#","#","#","#","#"}
     };
 
     private static List<Coordinate> coordinates = new List<Coordinate> ();
@@ -69,7 +69,7 @@ internal class Program
                 MoveHead(0, -1, coordinates[0].Row, 7, 5);
                 break;
             case "6": //Right
-                MoveHead(-1, 0, coordinates[0].Collum, 15, 6);
+                MoveHead(-1, 0, coordinates[0].Collum, 7, 6);
                 break;
             case "8": //Up
                 MoveHead(0, 1, coordinates[0].Row, 0, 8);
@@ -143,7 +143,7 @@ internal class Program
         Console.Clear();
         for (int i = 0; i < 8; i++)
         {
-            for (int j = 0; j < 16; j++)
+            for (int j = 0; j < 8; j++)
             {
                 if(grade[i, j] != "X")
                 {
@@ -158,7 +158,7 @@ internal class Program
         Console.Clear();
         for (int i = 0; i < 8; i++)
         {
-            for (int j = 0; j < 16; j++)
+            for (int j = 0; j < 8; j++)
             {
                 grade[i, j] = "#";
             }
@@ -170,7 +170,7 @@ internal class Program
         ClearGrid();
         coordinates.Clear();
         Coordinate coordinate = new Coordinate();
-        coordinate.Collum = new Random().Next(0, 15);
+        coordinate.Collum = new Random().Next(0, 7);
         coordinate.Row = new Random().Next(0, 7);
         coordinates.Add(coordinate);
         grade[coordinate.Row, coordinate.Collum] = "O";
@@ -184,7 +184,7 @@ internal class Program
         bool isFruit = true;
         while (isFruit)
         {
-            int collum = new Random().Next(0, 15);
+            int collum = new Random().Next(0, 7);
             int line = new Random().Next(0, 7);
             if (grade[line, collum] != "O")
             {
@@ -197,16 +197,16 @@ internal class Program
     public static void DrawGrid()
     {
         Console.Clear();
-        Console.WriteLine("=====SNAKE======\n");
+        Console.WriteLine(" =====SNAKE=====\n");
         for (int i = 0; i < 8; i++)
         {
-            for (int j = 0; j < 16; j++)
+            for (int j = 0; j < 8; j++)
             {
-                Console.Write(grade[i, j]);
+                Console.Write(" "+grade[i, j]);
             }
             Console.Write("\n");
         }
 
-        Console.WriteLine($"\nPoints: {points}");
+        Console.WriteLine($"\n Points: {points}");
     }
 }
