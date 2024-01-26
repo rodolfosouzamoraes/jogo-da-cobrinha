@@ -14,7 +14,7 @@ internal class Program
     };
 
     private static List<Coordinate> coordinates = new List<Coordinate> ();
-    private static string pathSnakeAuto = "8";
+    private static ConsoleKey pathSnakeAuto = ConsoleKey.UpArrow;
     private static int points = 0;
 
     private static void Main(string[] args)
@@ -26,25 +26,7 @@ internal class Program
         while (true)
         {
             DrawGrid();
-            var ch = Console.ReadKey();
-            switch (ch.Key)
-            {
-                case ConsoleKey.LeftArrow:
-                    pathSnakeAuto = "4";
-                    break;
-                case ConsoleKey.RightArrow:
-                    pathSnakeAuto = "6";
-                    break;
-                case ConsoleKey.UpArrow:
-                    pathSnakeAuto = "8";
-                    break;
-                case ConsoleKey.DownArrow:
-                    pathSnakeAuto = "5";
-                    break;
-                case ConsoleKey.Escape:
-                    Environment.Exit(0);
-                    break;
-            }
+            pathSnakeAuto = Console.ReadKey().Key;
             Thread.Sleep(1);
         }
     }
@@ -62,19 +44,20 @@ internal class Program
     {
         switch (pathSnakeAuto)
         {
-            case "4": //Left
+            case ConsoleKey.LeftArrow: //Left
                 MoveHead(1, 0, coordinates[0].Collum, 0, 4);
                 break;
-            case "5": //Down
+            case ConsoleKey.DownArrow: //Down
                 MoveHead(0, -1, coordinates[0].Row, 7, 5);
                 break;
-            case "6": //Right
+            case ConsoleKey.RightArrow: //Right
                 MoveHead(-1, 0, coordinates[0].Collum, 7, 6);
                 break;
-            case "8": //Up
+            case ConsoleKey.UpArrow: //Up
                 MoveHead(0, 1, coordinates[0].Row, 0, 8);
                 break;
-            case "0":
+            case ConsoleKey.Escape:
+                Environment.Exit(0);
                 return;
         }
     }
