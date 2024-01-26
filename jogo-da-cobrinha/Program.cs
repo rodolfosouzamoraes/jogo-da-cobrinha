@@ -45,16 +45,16 @@ internal class Program
         switch (pathSnakeAuto)
         {
             case ConsoleKey.LeftArrow: //Left
-                MoveHead(1, 0, coordinates[0].Collum, 0, 4);
+                MoveHead(1, 0, coordinates[0].Collum, 0);
                 break;
             case ConsoleKey.DownArrow: //Down
-                MoveHead(0, -1, coordinates[0].Row, 7, 5);
+                MoveHead(0, -1, coordinates[0].Row, 7);
                 break;
             case ConsoleKey.RightArrow: //Right
-                MoveHead(-1, 0, coordinates[0].Collum, 7, 6);
+                MoveHead(-1, 0, coordinates[0].Collum, 7);
                 break;
             case ConsoleKey.UpArrow: //Up
-                MoveHead(0, 1, coordinates[0].Row, 0, 8);
+                MoveHead(0, 1, coordinates[0].Row, 0);
                 break;
             case ConsoleKey.Escape:
                 Environment.Exit(0);
@@ -62,7 +62,7 @@ internal class Program
         }
     }
 
-    public static void MoveHead(int factorC, int factorL, int collumOrLine, int limit, int path)
+    public static void MoveHead(int factorC, int factorL, int collumOrLine, int limit)
     {
         if(collumOrLine != limit)
         {
