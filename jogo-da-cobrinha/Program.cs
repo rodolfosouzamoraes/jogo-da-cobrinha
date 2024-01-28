@@ -16,6 +16,7 @@ internal class Program
     private static List<Coordinate> coordinates = new List<Coordinate> ();
     private static ConsoleKey pathSnakeAuto = ConsoleKey.UpArrow;
     private static int points = 0;
+    private static int bestPoints = 0;
 
     private static void Main(string[] args)
     {
@@ -104,6 +105,10 @@ internal class Program
             }
             else
             {
+                if(bestPoints<points)
+                {
+                    bestPoints = points;
+                }
                 StartGame();
             }
         }        
@@ -191,5 +196,6 @@ internal class Program
         }
 
         Console.WriteLine($"\n Points: {points}");
+        Console.WriteLine($"\n   Best: {bestPoints}");
     }
 }
